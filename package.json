@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "arithmetic.js": "^1.0.4",
+    "uppercase-first": "^1.0.1"
+  }
+}
