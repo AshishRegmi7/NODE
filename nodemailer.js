@@ -11,16 +11,34 @@ const transporter = nodemailer.createTransport({
     pass: "",
   },
 });
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Server is ready to take our messages");
+  }
+});
 
 // async..await is not allowed in global scope, must use a wrapper
 async function main() {
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: '"Scammer kto mah"ashish.reg7@gmail.com', // sender address
-    to: "khanalbishal014@gmail.com , sumansapkota7777@gmail.com,ashish.reg9@gmail.com ", // list of receivers
+    to: "khanalbishal14@gmail.com , ashish.reg9@gmail.com ", // list of receivers
     subject: "Hello sathiharu", // Subject line
     text: "node bata pathako email hai", // plain text body
-    html: "<b>node bata pathako email ho hai sathi</b>", // html body
+    html: 'Embedded image: <img src="cid:unique@nodemailer.com"/>',
+    attachments: [
+      {
+        filename: "logo.png",
+        path: "./logo.png",
+        cid: "unique@nodemailer.com", //same cid value as in the html img src
+      },
+      {
+        filename: "logo.png",
+        path: "./logo.png",
+      },
+    ],
   });
 
   console.log("Message sent: %s", info.messageId);
