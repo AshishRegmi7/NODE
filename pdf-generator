@@ -1,0 +1,22 @@
+const PDF = require("pdfkit");
+const fs = require("fs");
+// Create a document
+const doc = new PDF();
+
+doc.pipe(fs.createWriteStream("output.pdf"));
+
+doc.image("C:\\Users\\ashis\\Downloads\\myPhoto.jfif", {
+  fit: [500, 500],
+  align: "center",
+  valign: "center",
+});
+doc
+  .font("E:\\New folder (2)\\github\\NODE\\Palatino Bold\\Palatino Bold.ttf")
+  .fontSize(16)
+  .text(
+    "Hi! My name is Ashish Regmi. I study at Himalaya College of Engineering. I have created this pdf using node.js and pdfkit package",
+    40,
+    40
+  );
+
+doc.end();
