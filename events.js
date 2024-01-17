@@ -1,17 +1,18 @@
 const events = require("events");
 //events initialize
 const eventEmitter = new events.EventEmitter();
+p;
 //fn define
 const sayHello = () => {
   console.log("Hello Everyone");
 };
 //Assign
 eventEmitter.addListener("hello", sayHello); //defined event name as hello
-//call event
-// eventEmitter.emit("hello");
+// call event
+eventEmitter.emit("hello");
 
 const gmail = () => {
-    console.log("Gmail Sender");
+  console.log("Gmail Sender");
 };
 eventEmitter.addListener("Gmail", gmail);
 const message = () => {
